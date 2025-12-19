@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:recyleit/pages/home.dart';
 import 'package:recyleit/pages/onboarding.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // atau Colors.white
+      statusBarIconBrightness: Brightness.dark, // ikon hitam
+      statusBarBrightness: Brightness.light, // iOS
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -17,8 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Onboarding(),
+      home: Home(),
     );
   }
 }
-
