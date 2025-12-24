@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:recyleit/pages/home.dart';
-import 'package:recyleit/pages/login.dart';
-import 'package:recyleit/pages/onboarding.dart';
 import 'package:flutter/services.dart';
 
 void main() async {
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LogIn(),
+      home: Home(),
     );
   }
 }

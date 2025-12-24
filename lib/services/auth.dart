@@ -3,6 +3,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:recyleit/pages/home.dart';
 import 'package:recyleit/services/database.dart';
+import 'package:recyleit/services/share_pref.dart';
 
 class AuthMethods {
   signInWithGoogle(BuildContext context) async {
@@ -23,6 +24,10 @@ class AuthMethods {
     UserCredential result = await firebaseAuth.signInWithCredential(credential);
 
     User? userDetails = result.user;
+    await SharedPreferenceHelpers().saveUserEmail(userDetails!.email!);
+    await SharedPreferenceHelpers().saveUserId(userDetails.uid);
+    await SharedPreferenceHelpers().saveUserName(userDetails.displayName!);
+    await SharedPreferenceHelpers().saveUserImage(userDetails.photoURL!);
 
     if (result != null) {
       Map<String, dynamic> userInfoMap = {
